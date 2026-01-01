@@ -1,0 +1,12 @@
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get("jwt");
+  const googleToken = urlParams.get("googleToken");
+  const role = urlParams.get("role");
+
+  if (window.opener && token) {
+    window.opener.postMessage({ token, googleToken, role }, "http://localhost:3000");
+  }
+
+  window.close();
+</script>
